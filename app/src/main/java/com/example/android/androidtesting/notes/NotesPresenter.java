@@ -47,7 +47,7 @@ public class NotesPresenter implements NotesContract.UserActionsListener {
 
     @Override
     public void addNewNote() {
-//        mNotesView.showAddNote();
+        mNotesView.showAddNote();
     }
 
     @Override
