@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
  * Unit tests for the implementation of {@link AddNotePresenter}.
  */
 public class AddNotePresenterTest {
-
+    //mock variables
     @Mock
     private NotesRepository mNotesRepository;
 

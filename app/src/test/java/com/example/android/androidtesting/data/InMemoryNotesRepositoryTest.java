@@ -21,6 +21,7 @@ import static org.mockito.Mockito.verify;
 
 /**
  * Unit tests for the implementation of the in-memory repository with cache.
+ * Unit tests for the implementation of {@link InMemoryNotesRepository}
  */
 public class InMemoryNotesRepositoryTest {
 

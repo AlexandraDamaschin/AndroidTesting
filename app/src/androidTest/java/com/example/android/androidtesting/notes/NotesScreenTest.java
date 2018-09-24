@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.example.android.androidtesting.R;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -14,12 +16,21 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.contrib.RecyclerViewActions.scrollTo;
+import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.hamcrest.Matchers.allOf;
-import static org.junit.Assert.fail;
+
 
 /**
  * Tests for the notes screen, the main screen which contains a grid of all notes.
@@ -30,7 +41,6 @@ public class NotesScreenTest {
 
     /**
      * A custom {@link Matcher} which matches an item in a {@link RecyclerView} by its text.
-     * <p>
      * <p>
      * View constraints:
      * <ul>
@@ -60,7 +70,6 @@ public class NotesScreenTest {
     /**
      * {@link ActivityTestRule} is a JUnit {@link Rule @Rule} to launch your activity under test.
      * <p>
-     * <p>
      * Rules are interceptors which are executed for each test method and are important building
      * blocks of Junit tests.
      */
@@ -68,19 +77,18 @@ public class NotesScreenTest {
     public ActivityTestRule<NotesActivity> mNotesActivityTestRule =
             new ActivityTestRule<>(NotesActivity.class);
 
+    //test if when we click on addNote button it opens the add note screen
     @Test
     public void clickAddNoteButton_opensAddNoteUi() throws Exception {
-        fail("Implement step 7");
-//        // Click on the add note button
-//        onView(withId(R.id.fab_add_notes)).perform(click());
-//
-//        // Check if the add note screen is displayed
-//        onView(withId(R.id.add_note_title)).check(matches(isDisplayed()));
+        // Click on the add note button
+        onView(withId(R.id.fab_add_notes)).perform(click());
+
+        // Check if the add note screen is displayed
+        onView(withId(R.id.add_note_title)).check(matches(isDisplayed()));
     }
 
     @Test
     public void addNoteToNotesList() throws Exception {
-        fail("Implement step 7");
 //        String newNoteTitle = "Espresso";
 //        String newNoteDescription = "UI testing for Android";
 //
