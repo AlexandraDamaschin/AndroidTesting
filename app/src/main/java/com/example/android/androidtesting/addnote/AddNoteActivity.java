@@ -1,8 +1,8 @@
 package com.example.android.androidtesting.addnote;
 
 
-import com.example.android.androidtesting.R;
-import com.example.android.androidtesting.util.EspressoIdlingResource;
+import com.example.android.androidtesting.notes.R;
+import com.example.android.androidtesting.notes.util.EspressoIdlingResource;
 
 import android.os.Bundle;
 import android.support.annotation.VisibleForTesting;
