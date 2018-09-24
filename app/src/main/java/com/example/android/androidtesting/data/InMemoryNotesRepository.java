@@ -30,7 +30,7 @@ public class InMemoryNotesRepository implements NotesRepository {
     }
 
     @Override
-    public void getNotes(@NonNull LoadNotesCallback callback) {
+    public void getNotes(final @NonNull LoadNotesCallback callback) {
         checkNotNull(callback);
         // Load from API only if needed.
         if (mCachedNotes == null) {
@@ -47,7 +47,7 @@ public class InMemoryNotesRepository implements NotesRepository {
     }
 
     @Override
-    public void getNote(@NonNull String noteId, @NonNull GetNoteCallback callback) {
+    public void getNote(@NonNull String noteId, final @NonNull GetNoteCallback callback) {
         checkNotNull(noteId);
         checkNotNull(callback);
         // Load notes matching the id always directly from the API.
