@@ -10,7 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.InOrder;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
@@ -55,22 +57,25 @@ public class NotesPresenterTest {
         mNotesPresenter = new NotesPresenter(mNotesRepository, mNotesView);
     }
 
+    /**
+     * Validates that the presenter correctly displays a list of notes -
+     * this includes retrieving the notes from the repository and updating the view
+     * (displaying a progress indicator and finally displaying the notes).
+     */
     @Test
     public void loadNotesFromRepositoryAndLoadIntoView() {
-        fail("Implement in step 6");
-//        // Given an initialized NotesPresenter with initialized notes
-//        // When loading of Notes is requested
-//        mNotesPresenter.loadNotes(true);
-//
-//        // Callback is captured and invoked with stubbed notes
-//        verify(mNotesRepository).getNotes(mLoadNotesCallbackCaptor.capture());
-//        mLoadNotesCallbackCaptor.getValue().onNotesLoaded(NOTES);
-//
-//        // Then progress indicator is hidden and notes are shown in UI
-//        InOrder inOrder = Mockito.inOrder(mNotesView);
-//        inOrder.verify(mNotesView).setProgressIndicator(true);
-//        inOrder.verify(mNotesView).setProgressIndicator(false);
-//        verify(mNotesView).showNotes(NOTES);
+        //First we are telling the NotesPresenter to load notes:
+        mNotesPresenter.loadNotes(true);
+
+        // Callback is captured and invoked with stubbed notes
+        verify(mNotesRepository).getNotes(mLoadNotesCallbackCaptor.capture());
+        mLoadNotesCallbackCaptor.getValue().onNotesLoaded(NOTES);
+
+        // Then progress indicator is hidden and notes are shown in UI
+        InOrder inOrder = Mockito.inOrder(mNotesView);
+        inOrder.verify(mNotesView).setProgressIndicator(true);
+        inOrder.verify(mNotesView).setProgressIndicator(false);
+        verify(mNotesView).showNotes(NOTES);
     }
 
     @Test
