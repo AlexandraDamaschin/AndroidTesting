@@ -41,14 +41,15 @@ public class NotesDetailPresenterTest {
 
     @Before
     public void setupNotesPresenter() {
-        // Mockito has a very convenient way to inject mocks by using the @Mock annotation. To
-        // inject the mocks in the test the initMocks method needs to be called.
+        // Mockito has a very convenient way to inject mocks by using the @Mock annotation.
+        // To inject the mocks in the test the initMocks method needs to be called.
         MockitoAnnotations.initMocks(this);
 
         // Get a reference to the class under test
         mNotesDetailsPresenter = new NoteDetailPresenter(mNotesRepository, mNoteDetailView);
     }
 
+    //get notes and load them
     @Test
     public void getNoteFromRepositoryAndLoadIntoView() {
         // Given an initialized NoteDetailPresenter with stubbed note
@@ -70,6 +71,7 @@ public class NotesDetailPresenterTest {
         verify(mNoteDetailView).showDescription(DESCRIPTION_TEST);
     }
 
+    //get unknown notes and load them
     @Test
     public void getUnknownNoteFromRepositoryAndLoadIntoView() {
         // When loading of a note is requested with an invalid note ID.

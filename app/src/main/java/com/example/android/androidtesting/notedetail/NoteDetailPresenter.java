@@ -11,6 +11,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Listens to user actions from the UI ({@link NoteDetailFragment}), retrieves the data and updates
  * the UI as required.
+ * Tested in {@link .NotesDetailPresenterTest}
  */
 
 public class NoteDetailPresenter implements NoteDetailContract.UserActionsListener {
