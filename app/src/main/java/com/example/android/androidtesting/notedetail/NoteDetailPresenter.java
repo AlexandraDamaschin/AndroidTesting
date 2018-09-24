@@ -1,7 +1,7 @@
 package com.example.android.androidtesting.notedetail;
 
-import com.example.android.androidtesting.notes.data.Note;
-import com.example.android.androidtesting.notes.data.NotesRepository;
+import com.example.android.androidtesting.data.Note;
+import com.example.android.androidtesting.data.NotesRepository;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
