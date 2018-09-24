@@ -32,6 +32,7 @@ public class NotesPresenter implements NotesContract.UserActionsListener {
     public void loadNotes(boolean forceUpdate) {
         //set indicator true
         mNotesView.setProgressIndicator(true);
+        //Refresh the data from the repository if an update is forced
         if (forceUpdate) {
             mNotesRepository.refreshData();
         }
