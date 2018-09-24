@@ -28,7 +28,7 @@ import static org.junit.Assert.fail;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class NoteDetailScreenTest {
-
+    //todo: Espresso test 3: Clicking a note
     private static String NOTE_TITLE = "ATSL";
 
     private static String NOTE_DESCRIPTION = "Rocks";
