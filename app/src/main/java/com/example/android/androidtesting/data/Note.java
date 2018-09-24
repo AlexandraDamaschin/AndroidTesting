@@ -52,7 +52,7 @@ public class Note {
     }
 
     //check if title or description is null or empty
-    public boolean isEmtpy() {
+    public boolean isEmpty() {
         return (mTitle == null || "".equals(mTitle)) &&
                 (mDescription == null || "".equals(mDescription));
     }

@@ -1,7 +1,6 @@
 package com.example.android.androidtesting.addnote;
 
-
-import com.example.android.androidtesting.notes.R;
+import com.example.android.androidtesting.R;
 import com.example.android.androidtesting.util.EspressoIdlingResource;
 
 import android.os.Bundle;
