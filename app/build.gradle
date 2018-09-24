@@ -49,6 +49,7 @@ android {
             events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
         }
     }
+    sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/dimens', 'src/main/res/2'] } }
 }
 
 dependencies {
