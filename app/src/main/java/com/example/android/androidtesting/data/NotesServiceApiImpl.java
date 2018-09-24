@@ -17,7 +17,7 @@ public class NotesServiceApiImpl implements NotesServiceApi {
             NotesServiceApiEndpoint.loadPersistedNotes();
 
     @Override
-    public void getAllNotes(NotesServiceCallback<List<Note>> callback) {
+    public void getAllNotes(final NotesServiceCallback<List<Note>> callback) {
         // Simulate network by delaying the execution.
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

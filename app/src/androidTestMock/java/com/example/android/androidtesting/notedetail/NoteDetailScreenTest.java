@@ -18,7 +18,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static com.example.android.androidtesting.notes.custom.matcher.ImageViewHasDrawableMatcher.hasDrawable;
+import static com.example.android.androidtesting.custom.matcher.ImageViewHasDrawableMatcher.hasDrawable;
 import static org.hamcrest.Matchers.allOf;
 import static org.junit.Assert.fail;
 
@@ -42,11 +42,11 @@ public class NoteDetailScreenTest {
 
     /**
      * {@link ActivityTestRule} is a JUnit {@link Rule @Rule} to launch your activity under test.
-     *
+     * <p>
      * <p>
      * Rules are interceptors which are executed for each test method and are important building
      * blocks of Junit tests.
-     *
+     * <p>
      * <p>
      * Sometimes an {@link Activity} requires a custom start {@link Intent} to receive data
      * from the source Activity. ActivityTestRule has a feature which let's you lazily start the
@@ -60,7 +60,7 @@ public class NoteDetailScreenTest {
     /**
      * Setup your test fixture with a fake note id. The {@link NoteDetailActivity} is started with
      * a particular note id, which is then loaded from the service API.
-     *
+     * <p>
      * <p>
      * Note that this test runs hermetically and is fully isolated using a fake implementation of
      * the service API. This is a great way to make your tests more reliable and faster at the same

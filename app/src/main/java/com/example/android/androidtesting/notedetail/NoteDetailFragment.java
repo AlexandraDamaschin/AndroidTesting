@@ -6,7 +6,7 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.example.android.androidtesting.Injection;
-import com.example.android.androidtesting.notes.R;
+import com.example.android.androidtesting.R;
 import com.example.android.androidtesting.util.EspressoIdlingResource;
 
 import android.os.Bundle;
