@@ -30,7 +30,6 @@ import static org.powermock.api.mockito.PowerMockito.when;
  * or using a mocking framework like Mockito works fine, but there are situations where these
  * frameworks fall short, for instance when working with static util classes in the android.jar.
  * <p>
- * <p>
  * To work around that limitation this test uses Powermockito, a library which adds support for
  * mocking static methods to Mockito. Powermockito should be used with care since it is normally a
  * sign of a bad code design. Nevertheless it can be handy while working with third party
@@ -39,7 +38,7 @@ import static org.powermock.api.mockito.PowerMockito.when;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({Environment.class, File.class}) // Prepare the static classes for mocking
 public class ImageFileTest {
-
+    //mock objects
     @Mock
     private File mDirectory;
 
