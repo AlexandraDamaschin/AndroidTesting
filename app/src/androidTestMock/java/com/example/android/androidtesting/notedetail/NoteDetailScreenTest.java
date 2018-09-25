@@ -34,10 +34,10 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class NoteDetailScreenTest {
-    private static String NOTE_TITLE = "ATSL";
 
-    private static String NOTE_DESCRIPTION = "Rocks";
-
+    //mocks
+    private static String NOTE_TITLE = "Note title test";
+    private static String NOTE_DESCRIPTION = "Note description test";
     private static String NOTE_IMAGE = "file:///android_asset/atsl-logo.png";
 
     /**
@@ -52,8 +52,9 @@ public class NoteDetailScreenTest {
      * blocks of Junit tests.
      * <p>
      * Sometimes an {@link Activity} requires a custom start {@link Intent} to receive data
-     * from the source Activity. ActivityTestRule has a feature which let's you lazily start the
-     * Activity under test, so you can control the Intent that is used to start the target Activity.
+     * from the source Activity.
+     * ActivityTestRule has a feature which let's you lazily start the Activity under test,
+     * so you can control the Intent that is used to start the target Activity.
      */
     @Rule
     public ActivityTestRule<NoteDetailActivity> mNoteDetailActivityTestRule =
@@ -61,7 +62,7 @@ public class NoteDetailScreenTest {
                     false /* Lazily launch activity */);
 
     /**
-     * Setup your test fixture with a fake note id. The {@link NoteDetailActivity} is started with
+     * Setup of test fixture with a fake note id. The {@link NoteDetailActivity} is started with
      * a particular note id, which is then loaded from the service API.
      * <p>
      * Note that this test runs hermetically and is fully isolated using a fake implementation of
@@ -87,6 +88,7 @@ public class NoteDetailScreenTest {
     @Test
     public void noteDetails_DisplayedInUi() throws Exception {
         // fail("Implement step 7");
+
         // Check that the note title, description and image are displayed
         onView(withId(R.id.note_detail_title)).check(matches(withText(NOTE_TITLE)));
         onView(withId(R.id.note_detail_description)).check(matches(withText(NOTE_DESCRIPTION)));

@@ -31,7 +31,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.hamcrest.Matchers.allOf;
 
-
 /**
  * Tests for the notes screen, the main screen which contains a grid of all notes.
  */
@@ -41,7 +40,6 @@ public class NotesScreenTest {
 
     /**
      * A custom {@link Matcher} which matches an item in a {@link RecyclerView} by its text.
-     * <p>
      * View constraints:
      * <ul>
      * <li>View must be a child of a {@link RecyclerView}
@@ -116,5 +114,4 @@ public class NotesScreenTest {
         // Verify note is displayed on screen
         onView(withItemText(newNoteDescription)).check(matches(isDisplayed()));
     }
-
 }

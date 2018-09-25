@@ -1,6 +1,5 @@
 package com.example.android.androidtesting.notes;
 
-
 import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -26,14 +25,15 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.fail;
 
-
 /**
  * Tests for the {@link DrawerLayout} layout component in {@link NotesActivity} which manages
  * navigation within the app.
  */
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class AppNavigationTest {
+
     /**
      * {@link ActivityTestRule} is a JUnit {@link Rule @Rule} to launch your activity under test
      * <p>
@@ -44,7 +44,7 @@ public class AppNavigationTest {
     public ActivityTestRule<NotesActivity> mActivityTestRule =
             new ActivityTestRule<>(NotesActivity.class);
 
-    /***
+    /**
      * The navigation drawer to find a specific item that we want to select.
      */
     @Test

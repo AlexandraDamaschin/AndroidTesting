@@ -105,7 +105,7 @@ public class AddNoteScreenTest {
         // Save the note
         onView(withId(R.id.fab_add_notes)).perform(click());
 
-//        Snackbar tests are unreliable using the latest support libs, skip the assertion for now.
+//        // Snackbar tests are unreliable using the latest support libs, skip the assertion for now.
 //        // Verify empty notes snackbar is shown
 //        String emptyNoteMessageText = getTargetContext().getString(R.string.empty_note_message);
 //        onView(withText(emptyNoteMessageText)).check(matches(isDisplayed()));
