@@ -2,7 +2,7 @@ package com.example.android.androidtesting.addnote;
 
 import android.app.Activity;
 import android.app.Instrumentation.ActivityResult;
-import android.support.test.espresso.Espresso;
+import android.provider.MediaStore;
 import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.filters.LargeTest;
@@ -10,7 +10,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.android.androidtesting.R;
-import com.example.android.androidtesting.notedetail.NoteDetailFragment;
 
 import org.junit.After;
 import org.junit.Before;
@@ -22,11 +21,18 @@ import static android.support.test.InstrumentationRegistry.getTargetContext;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.intent.Intents.intending;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static com.example.android.androidtesting.custom.matcher.ImageViewHasDrawableMatcher.hasDrawable;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.not;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.fail;
 
 /**
  * Tests for the add note screen.
@@ -61,26 +67,32 @@ public class AddNoteScreenTest {
                 mAddNoteIntentsTestRule.getActivity().getCountingIdlingResource());
     }
 
+    /**
+     * We will stub out all Intents that match the MediaStore.ACTION_IMAGE_CAPTURE action and always respond with a valid (RESULT_OK) ActivityResult
+     * (provided by a call to createImageCaptureActivityResultStub() ).
+     */
     @Test
     public void addImageToNote_ShowsThumbnailInUi() {
-        fail("Implement in step 8");
-//        // Create an Activity Result which can be used to stub the camera Intent
-//        ActivityResult result = createImageCaptureActivityResultStub();
-//        // If there is an Intent with ACTION_IMAGE_CAPTURE, intercept the Intent and respond with
-//        // a stubbed result.
-//        intending(hasAction(MediaStore.ACTION_IMAGE_CAPTURE)).respondWith(result);
-//
-//        // Check thumbnail view is not displayed
-//        onView(withId(R.id.add_note_image_thumbnail)).check(matches(not(isDisplayed())));
-//
-//        selectTakeImageFromMenu();
-//
-//        // Check that the stubbed thumbnail is displayed in the UI
-//        onView(withId(R.id.add_note_image_thumbnail))
-//                .perform(scrollTo()) // Scroll to thumbnail
-//                .check(matches(allOf(
-//                        hasDrawable(), // Check ImageView has a drawable set with a custom matcher
-//                        isDisplayed())));
+        // fail("Implement in step 8");
+
+        // Create an Activity Result which can be used to stub the camera Intent
+        ActivityResult result = createImageCaptureActivityResultStub();
+        // If there is an Intent with ACTION_IMAGE_CAPTURE, intercept the Intent and respond with
+        // a stubbed result.
+        intending(hasAction(MediaStore.ACTION_IMAGE_CAPTURE)).respondWith(result);
+
+        // Check thumbnail view is not displayed
+        onView(withId(R.id.add_note_image_thumbnail)).check(matches(not(isDisplayed())));
+
+        //We select the "Add image" option in the menu using a short helper method.
+        selectTakeImageFromMenu();
+
+        // Check that the stubbed thumbnail is displayed in the UI
+        onView(withId(R.id.add_note_image_thumbnail))
+                .perform(scrollTo()) // Scroll to thumbnail
+                .check(matches(allOf(
+                        hasDrawable(), // Check ImageView has a drawable set with a custom matcher
+                        isDisplayed())));
     }
 
     @Test
