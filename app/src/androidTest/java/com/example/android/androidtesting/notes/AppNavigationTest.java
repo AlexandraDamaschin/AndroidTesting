@@ -1,6 +1,7 @@
 package com.example.android.androidtesting.notes;
 
 
+import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -16,10 +17,13 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.contrib.DrawerActions.open;
 import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
 import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
+import static android.support.test.espresso.contrib.NavigationViewActions.navigateTo;
 import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.fail;
 
 
@@ -41,22 +45,29 @@ public class AppNavigationTest {
     public ActivityTestRule<NotesActivity> mActivityTestRule =
             new ActivityTestRule<>(NotesActivity.class);
 
+    /***
+     * The navigation drawer to find a specific item that we want to select.
+     */
     @Test
     public void clickOnStatisticsNavigationItem_ShowsStatisticsScreen() {
-        fail("Implement step 9");
-//        // Open Drawer to click on navigation.
-//        onView(withId(R.id.drawer_layout))
-//                .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
-//                .perform(open()); // Open Drawer
-//
-//        // Start statistics screen.
-//        onView(withId(R.id.nav_view))
-//                .perform(navigateTo(R.id.statistics_navigation_menu_item));
-//
-//        // Check that statistics Activity was opened.
-//        String expectedNoStatisticsText = InstrumentationRegistry.getTargetContext()
-//                .getString(R.string.no_statistics_available);
-//        onView(withId(R.id.no_statistics)).check(matches(withText(expectedNoStatisticsText)));
+        // fail("Implement step 9");
+
+        // Open Drawer to click on navigation.
+        // Find the navigation drawer layout, check that it is closed
+        onView(withId(R.id.drawer_layout))
+                .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+                .perform(open()); // Open Drawer
+
+        // Start statistics screen.
+        // Now that the drawer is open we need to find the "statistics" item in the drawer and select it.
+        onView(withId(R.id.nav_view))
+                .perform(navigateTo(R.id.statistics_navigation_menu_item));
+
+        // Check that statistics Activity was opened.
+        String expectedNoStatisticsText = InstrumentationRegistry.getTargetContext()
+                .getString(R.string.no_statistics_available);
+        // Verify that the correct text message "No statistics" is displayed.
+        onView(withId(R.id.no_statistics)).check(matches(withText(expectedNoStatisticsText)));
     }
 
     /**
