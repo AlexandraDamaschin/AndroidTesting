@@ -18,6 +18,7 @@ import static org.mockito.Mockito.verify;
  */
 public class NotesDetailPresenterTest {
 
+    //mock variables
     public static final String INVALID_ID = "INVALID_ID";
 
     public static final String TITLE_TEST = "title";
@@ -49,7 +50,7 @@ public class NotesDetailPresenterTest {
         mNotesDetailsPresenter = new NoteDetailPresenter(mNotesRepository, mNoteDetailView);
     }
 
-    //get notes and load them
+    // Get notes and load them
     @Test
     public void getNoteFromRepositoryAndLoadIntoView() {
         // Given an initialized NoteDetailPresenter with stubbed note
@@ -71,7 +72,7 @@ public class NotesDetailPresenterTest {
         verify(mNoteDetailView).showDescription(DESCRIPTION_TEST);
     }
 
-    //get unknown notes and load them
+    // Get unknown notes and load them
     @Test
     public void getUnknownNoteFromRepositoryAndLoadIntoView() {
         // When loading of a note is requested with an invalid note ID.

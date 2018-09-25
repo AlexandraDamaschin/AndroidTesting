@@ -20,14 +20,15 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /**
- * Unit tests for the implementation of the in-memory repository with cache.
- * Unit tests for the implementation of {@link InMemoryNotesRepository}
+ * Unit tests for the implementation of the in-memory repository with cache. {@link InMemoryNotesRepository}
  */
 public class InMemoryNotesRepositoryTest {
 
+    //mocks variables
     private final static String NOTE_TITLE = "title";
 
-    private static List<Note> NOTES = Lists.newArrayList(new Note("Title1", "Description1"),
+    private static List<Note> NOTES = Lists.newArrayList(
+            new Note("Title1", "Description1"),
             new Note("Title2", "Description2"));
 
     private InMemoryNotesRepository mNotesRepository;
@@ -58,6 +59,7 @@ public class InMemoryNotesRepositoryTest {
         mNotesRepository = new InMemoryNotesRepository(mServiceApi);
     }
 
+    // get notes caches after first api call
     @Test
     public void getNotes_repositoryCachesAfterFirstApiCall() {
         // Given a setup Captor to capture callbacks
@@ -68,6 +70,7 @@ public class InMemoryNotesRepositoryTest {
         verify(mServiceApi).getAllNotes(any(NotesServiceApi.NotesServiceCallback.class));
     }
 
+    // Invalidate cache
     @Test
     public void invalidateCache_DoesNotCallTheServiceApi() {
         // Given a setup Captor to capture callbacks
@@ -81,6 +84,7 @@ public class InMemoryNotesRepositoryTest {
         verify(mServiceApi, times(2)).getAllNotes(any(NotesServiceApi.NotesServiceCallback.class));
     }
 
+    // Get all notes from api
     @Test
     public void getNotes_requestsAllNotesFromServiceApi() {
         // When notes are requested from the notes repository
@@ -90,6 +94,7 @@ public class InMemoryNotesRepositoryTest {
         verify(mServiceApi).getAllNotes(any(NotesServiceApi.NotesServiceCallback.class));
     }
 
+    // Save notes to api
     @Test
     public void saveNote_savesNoteToServiceAPIAndInvalidatesCache() {
         // Given a stub note with title and description
@@ -102,6 +107,7 @@ public class InMemoryNotesRepositoryTest {
         assertThat(mNotesRepository.mCachedNotes, is(nullValue()));
     }
 
+    // Get one note from api
     @Test
     public void getNote_requestsSingleNoteFromServiceApi() {
         // When a note is requested from the notes repository

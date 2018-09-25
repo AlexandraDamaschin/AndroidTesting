@@ -1,6 +1,5 @@
 package com.example.android.androidtesting.notes;
 
-
 import com.example.android.androidtesting.data.Note;
 import com.example.android.androidtesting.data.NotesRepository;
 import com.example.android.androidtesting.data.NotesRepository.LoadNotesCallback;
@@ -26,11 +25,14 @@ import static org.mockito.Mockito.verify;
  */
 public class NotesPresenterTest {
 
-    private static List<Note> NOTES = Lists.newArrayList(new Note("Title1", "Description1"),
+    // Create mock list of notes
+    private static List<Note> NOTES = Lists.newArrayList(
+            new Note("Title1", "Description1"),
             new Note("Title2", "Description2"));
 
     private static List<Note> EMPTY_NOTES = new ArrayList<>(0);
 
+    //mock variables
     @Mock
     private NotesRepository mNotesRepository;
 

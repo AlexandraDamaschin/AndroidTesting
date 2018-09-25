@@ -1,6 +1,5 @@
 package com.example.android.androidtesting.addnote;
 
-
 import com.example.android.androidtesting.data.Note;
 import com.example.android.androidtesting.data.NotesRepository;
 import com.example.android.androidtesting.util.ImageFile;
@@ -22,7 +21,7 @@ import static org.mockito.Mockito.when;
  * Unit tests for the implementation of {@link AddNotePresenter}.
  */
 public class AddNotePresenterTest {
-    //mock variables
+    //mocks variables
     @Mock
     private NotesRepository mNotesRepository;
 
@@ -44,6 +43,7 @@ public class AddNotePresenterTest {
         mAddNotesPresenter = new AddNotePresenter(mNotesRepository, mAddNoteView, mImageFile);
     }
 
+    // Save note to repo success UI
     @Test
     public void saveNoteToRepository_showsSuccessMessageUi() {
         // When the presenter is asked to save a note
@@ -54,6 +54,7 @@ public class AddNotePresenterTest {
         verify(mAddNoteView).showNotesList(); // shown in the UI
     }
 
+    // Save note error UI
     @Test
     public void saveNote_emptyNoteShowsErrorUi() {
         // When the presenter is asked to save an empty note
@@ -63,6 +64,7 @@ public class AddNotePresenterTest {
         verify(mAddNoteView).showEmptyNoteError();
     }
 
+    // Open camera and take picture
     @Test
     public void takePicture_CreatesFileAndOpensCamera() throws IOException {
         // When the presenter is asked to take an image
@@ -74,6 +76,7 @@ public class AddNotePresenterTest {
         verify(mAddNoteView).openCamera(anyString());
     }
 
+    // Save image and update UI
     @Test
     public void imageAvailable_SavesImageAndUpdatesUiWithThumbnail() {
         // Given an a stubbed image file
@@ -88,6 +91,7 @@ public class AddNotePresenterTest {
         verify(mAddNoteView).showImagePreview(contains(imageUrl));
     }
 
+    // Image does not exists error UI
     @Test
     public void imageAvailable_FileDoesNotExistShowsErrorUi() {
         // Given the image file does not exist
@@ -101,6 +105,7 @@ public class AddNotePresenterTest {
         verify(mImageFile).delete();
     }
 
+    // No image available, error UI
     @Test
     public void noImageAvailable_ShowsErrorUi() {
         // When the presenter is notified that image capturing failed
