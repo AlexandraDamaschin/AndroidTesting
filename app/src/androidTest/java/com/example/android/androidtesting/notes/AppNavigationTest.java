@@ -34,7 +34,6 @@ import static org.junit.Assert.fail;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class AppNavigationTest {
-    //todo: Espresso-Intents Test 1: Clicking "Navigate up" opens the Navigation Drawer
     /**
      * {@link ActivityTestRule} is a JUnit {@link Rule @Rule} to launch your activity under test
      * <p>
