@@ -30,7 +30,7 @@ import static org.junit.Assert.fail;
 
 /**
  * Tests for the add note screen.
- * Unit tests for the implementation of {@link }.
+ * Unit tests for the implementation of {@link AddNoteActivity}.
  */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -42,6 +42,8 @@ public class AddNoteScreenTest {
      * <p>
      * Rules are interceptors which are executed for each test method and are important building
      * blocks of Junit tests.
+     * <p>
+     * It initialises Espresso-Intents before each @Test and releases it after each run.
      */
     @Rule
     public IntentsTestRule<AddNoteActivity> mAddNoteIntentsTestRule =
