@@ -28,7 +28,9 @@ import static org.hamcrest.Matchers.allOf;
 
 /**
  * Tests for the notes screen, the main screen which contains a list of all notes.
+ * Unit tests for the implementation of {@link NoteDetailFragment}.
  */
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class NoteDetailScreenTest {
@@ -79,7 +81,9 @@ public class NoteDetailScreenTest {
         registerIdlingResource();
     }
 
-    // Verifies that the title, description and image match what we have just added
+    /**
+     * Verifies that the title, description and image match what we have just added
+     */
     @Test
     public void noteDetails_DisplayedInUi() throws Exception {
         // fail("Implement step 7");
