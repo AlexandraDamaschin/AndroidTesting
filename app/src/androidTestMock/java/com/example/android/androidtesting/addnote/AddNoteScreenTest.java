@@ -3,12 +3,14 @@ package com.example.android.androidtesting.addnote;
 import android.app.Activity;
 import android.app.Instrumentation.ActivityResult;
 import android.support.test.espresso.Espresso;
+import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.android.androidtesting.R;
+import com.example.android.androidtesting.notedetail.NoteDetailFragment;
 
 import org.junit.After;
 import org.junit.Before;
@@ -28,6 +30,7 @@ import static org.junit.Assert.fail;
 
 /**
  * Tests for the add note screen.
+ * Unit tests for the implementation of {@link }.
  */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -36,7 +39,6 @@ public class AddNoteScreenTest {
     /**
      * {@link IntentsTestRule} is an {@link ActivityTestRule} which inits and releases Espresso
      * Intents before and after each test run.
-     * <p>
      * <p>
      * Rules are interceptors which are executed for each test method and are important building
      * blocks of Junit tests.
@@ -53,7 +55,7 @@ public class AddNoteScreenTest {
      */
     @Before
     public void registerIdlingResource() {
-        Espresso.registerIdlingResources(
+        IdlingRegistry.getInstance().register(
                 mAddNoteIntentsTestRule.getActivity().getCountingIdlingResource());
     }
 
@@ -100,7 +102,7 @@ public class AddNoteScreenTest {
      */
     @After
     public void unregisterIdlingResource() {
-        Espresso.unregisterIdlingResources(
+        IdlingRegistry.getInstance().unregister(
                 mAddNoteIntentsTestRule.getActivity().getCountingIdlingResource());
     }
 
