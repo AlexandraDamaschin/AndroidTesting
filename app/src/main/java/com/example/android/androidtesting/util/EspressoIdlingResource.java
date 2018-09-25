@@ -5,6 +5,9 @@ import android.support.test.espresso.IdlingResource;
 
 /**
  * Contains a static reference to {@link IdlingResource}, only available in the 'mock' build type.
+ * Idling Resource = 0: idle (inactive time)
+ * Idling Resource != 0: not idle (active time)
+ * Idling Resource < 0: Exception
  */
 
 public class EspressoIdlingResource {
